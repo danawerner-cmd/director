@@ -10,7 +10,7 @@ body{
 margin:0;
 background:#0b0b0f;
 color:#e8e8e8;
-font-family: sans-serif;
+font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -18,17 +18,32 @@ height:100vh;
 text-align:center;
 }
 
-#app{width:90%;max-width:500px}
+#app{
+width:90%;
+max-width:500px;
+}
 
-.text{font-size:20px;line-height:1.6}
+h1{
+font-weight:300;
+letter-spacing:2px;
+font-size:22px;
+margin-bottom:40px;
+opacity:0.8;
+}
+
+.text{
+font-size:20px;
+line-height:1.6;
+min-height:120px;
+}
 
 button{
 margin-top:30px;
 padding:12px 20px;
 border:none;
 border-radius:8px;
-background:#ffffff20;
-color:white;
+background:#ffffff15;
+color:#fff;
 font-size:16px;
 }
 </style>
@@ -37,42 +52,64 @@ font-size:16px;
 <body>
 
 <div id="app">
-<div class="text">El Director ya está aquí.</div>
+<h1>El Director</h1>
+
+<div class="text">
+El Director ya está acá.
+</div>
+
 <button onclick="start()">Entrar</button>
 </div>
 
 <script>
 
-const interventions=[
-"El Director considera que esta noche recién comienza.",
-"Durante los próximos segundos, el resto deja de importar.",
-"El Director no tiene apuro.",
-"Algunas miradas duran más de lo necesario.",
-"Hoy no vinieron a comportarse como desconocidos.",
-"El Director sugiere no pensar demasiado.",
-"El silencio también es una intervención válida.",
-"El Director nota que siguen aquí.",
-"Esto ya cambió.",
-"Lo que viene depende de ustedes."
+const interventions = [
+"El Director siente que esta noche recién empieza.",
+"En los próximos segundos, lo de afuera no importa.",
+"El Director no tiene apuro… ninguno.",
+"A veces una mirada dura más de lo que debería.",
+"Hoy no están actuando como desconocidos.",
+"No hace falta pensar tanto.",
+"Hay cosas que se entienden sin explicarlas.",
+"El silencio también juega su parte.",
+"El Director nota que ya se dieron cuenta de algo.",
+"Por favor, no miren el teléfono por un momento.",
+"Si alguien sonríe ahora, cambia todo.",
+"El Director no repite las cosas.",
+"Lo que están sintiendo no necesita explicación.",
+"Siguen acá… interesante.",
+"Esto ya no es tan inocente como al principio.",
+"El Director no interrumpe porque sí.",
+"Algo entre ustedes ya se movió.",
+"No hace falta resistirse tanto.",
+"Lo que pase después, ya es decisión de ustedes.",
+"El Director se corre un segundo."
 ];
 
-let i=0;
+let i = 0;
 
 function start(){
-document.getElementById("app").innerHTML=
-`<div class="text">${interventions[i]}</div>
-<button onclick="next()">Continuar</button>`;
+document.getElementById("app").innerHTML = `
+<div class="text">${interventions[i]}</div>
+<button onclick="next()">Seguir</button>
+`;
 }
 
 function next(){
 i++;
-if(i>=interventions.length){
-document.getElementById("app").innerHTML=
-`<div class="text">El Director ya no habla.</div>
-<button onclick="location.reload()">Cerrar</button>`;
+
+if(i >= interventions.length){
+document.getElementById("app").innerHTML = `
+<div class="text">
+El Director ya no dice nada.<br><br>
+Lo que pase ahora, ya es entre ustedes.
+</div>
+<button onclick="location.reload()">Cerrar</button>
+`;
 return;
 }
-document.querySelector(".text").innerHTML=interventions[i];
+
+document.querySelector(".text").innerHTML = interventions[i];
 }
 
 </script>
